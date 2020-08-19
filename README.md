@@ -1,4 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+______________________________________________
+
+Login: vlapar14@gmail.com
+Password: dkfl1314
+
+Project created for understending react tools
+______________________________________________
 
 ## Available Scripts
 
