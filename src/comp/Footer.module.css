@@ -1,0 +1,23 @@
+.footer {
+  width: 60%;
+  margin: 40px auto;
+  text-align: center;
+}
+.footer form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.footer textarea {
+  width: 400px;
+
+  border: 0px solid white;
+  border-bottom: 1px solid gray;
+}
+.footer button {
+  padding: 30px 30px;
+  margin-left: 10px;
+
+  border: 0px solid white;
+  background-color: beige;
+}

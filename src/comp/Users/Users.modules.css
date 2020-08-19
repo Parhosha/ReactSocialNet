@@ -1,0 +1,43 @@
+div img {
+  width: 150px;
+}
+h1,
+h5 {
+  text-align: center;
+}
+.headerDesc {
+  padding: 25px;
+}
+.user {
+  padding: 40px 20px;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 40px;
+  width: 50%;
+  margin: 0 auto;
+}
+.pageSelected {
+  color: red;
+}
+.pages {
+  color: green;
+}
+.pageWrap {
+  margin: 0 auto;
+  width: 350px;
+}
+.button {
+  padding: 5px;
+}
+.status > * {
+  font-weight: bolder;
+  color: red;
+  display: inline-block;
+  padding: 5px 0;
+}
+.pageWrap div {
+  width: 40px;
+  margin: 0 auto;
+  display: inline-block;
+}

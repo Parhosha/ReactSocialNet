@@ -1,0 +1,70 @@
+
+import React, {useState} from 'react';
+
+class PostRemark extends React.Component{
+ 
+state = {
+
+    editMode:false,
+    status: this.props.status
+}
+
+changeModeOnSwitch = () => {
+   
+    this.setState ({
+        editMode: true
+            
+    })        
+     //   if(this.state.editMode === false){   }
+}
+
+changeModeOffSwitch = () => {
+
+    this.setState ({
+        editMode: false,
+      
+    })
+    this.props.updStatus(this.state.status)
+
+}
+componentDidUpdate(prevProps,prevState){
+
+      console.log(prevProps.status + ' / ' + this.props.status + ' / ' + this.state.status)
+
+    if(prevProps.status !== this.props.status ){
+         this.setState({
+             status: this.props.status  
+            })
+     }
+}
+changeStatusLocal = (e) => {
+         this.setState({
+             status: e.currentTarget.value
+    })
+ 
+}
+   
+    
+    render(){
+
+        return (
+    <div className="status">
+        
+        { !this.state.editMode &&
+        <div> Status:
+        <div onClick = {this.changeModeOnSwitch}>{  this.state.status || '-empty-'}</div>
+        </div>
+        }
+
+        { this.state.editMode &&
+        <div>
+        <input type="text" onBlur = {this.changeModeOffSwitch} autoFocus={true} onChange={this.changeStatusLocal}/>
+        </div>
+        }
+    </div>
+
+        )
+    }
+}
+
+export default PostRemark;

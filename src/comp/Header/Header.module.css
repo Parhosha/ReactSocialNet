@@ -1,0 +1,27 @@
+
+header{
+	width: 90%;
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows:  1fr;
+	grid-gap: 100px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 20px 0;
+	
+}
+header > p{
+	background-color: beige;
+	padding: 10px 0;
+}
+header > p:hover{
+background-color: white;
+
+}
+header a{
+	text-decoration: none;
+	color: black;
+}
+.activeLink{
+	color: green;
+}
