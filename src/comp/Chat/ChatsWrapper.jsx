@@ -7,6 +7,7 @@ import {
   setUserProfileAC,
   updStatus,
   uploadPhoto,
+  profileEditAC,
 } from '../redux/Chat-reducer';
 import Chat from './Chat';
 import { withRouter } from 'react-router-dom';
@@ -22,6 +23,8 @@ class ChatsContainer extends React.Component {
     return (
       <div>
         <Chat
+          //getStatus={this.props.getStatus(this.props.match.params.user)}
+          thisUser={this.props.match.params.user}
           user={this.props.user}
           messages={this.props.messages}
           heppandActionCreator={this.props.heppandActionCreator}
@@ -30,6 +33,7 @@ class ChatsContainer extends React.Component {
           status={this.props.status}
           test={this.props.test}
           uploadPhoto={this.props.uploadPhoto}
+          profileEditAC={this.props.profileEditAC}
         />
       </div>
     );
@@ -54,6 +58,7 @@ const ChatsWrapper = AuthHoc(
     heppandActionCreator,
     setUserProfileAC,
     uploadPhoto,
+    profileEditAC,
   })(urlData),
 );
 

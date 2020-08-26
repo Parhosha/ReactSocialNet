@@ -14,7 +14,7 @@ const BUTTON = 'BUTTON';
 let Users = {
   user: null,
   usersTotalCount: 0,
-  pageSize: 6,
+  pageSize: 10,
   pageSelected: 1,
   isLoad: false,
   follow: true,

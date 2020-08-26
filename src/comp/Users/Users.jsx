@@ -20,7 +20,14 @@ const Users = (props) => {
       {console.log(props.user)}
       <div className="headerDesc">
         <h1>Find a friends</h1>
-        <h5>*my profile located around 303 page ( id 8189 )*</h5>
+        <div>
+          <center>
+            <NavLink to={'/Chat/8189'}>
+              {' '}
+              <b> * my profile * </b>
+            </NavLink>
+          </center>
+        </div>
       </div>
       <div className="user">
         {props.user.map((p, index) => (

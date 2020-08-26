@@ -8,7 +8,7 @@ let initReducer = {
   id: null,
   name: null,
   login: null,
-  auth: false, //1
+  auth: 1, //0 edit for log
 };
 
 const AuthReducer = (state = initReducer, action) => {

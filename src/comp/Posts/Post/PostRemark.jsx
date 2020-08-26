@@ -31,13 +31,14 @@ const PostRemark = (props) => {
   const changeModeOnSwitch = () => {
     setEditMode(true);
   };
-
+  //добавил условие если профиль мой то постремарк
+  //не будет показывать сообщение для ахдела контента
   return (
     <div>
       {!editMode && (
         <div>
           {' '}
-          <p>What on photo?</p>
+          {props.id == '8189' ? '' : <p>What on photo?</p>}
           <div onClick={changeModeOnSwitch} className="status">
             <b>{status || '*click to write*'}</b>
           </div>

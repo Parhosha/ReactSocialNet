@@ -25,9 +25,12 @@ export default AppReducer;
 
 export const autComplite = (data) => ({ type: COMPLITEAPP, data });
 
-export const turnProcess = () => (dispatch) => {
+export const turnProcess = () => async (dispatch) => {
   let promise = dispatch(getUsers());
   let MePromise = dispatch(Me());
+
+  //MePromise.then(dispatch(autComplite(MePromise)));
+
   //MePromise.then(dispatch(autComplite(MePromise)));
   //[promise]
 

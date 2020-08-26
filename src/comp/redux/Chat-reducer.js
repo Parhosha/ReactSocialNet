@@ -6,6 +6,7 @@ const MSG_ADD = 'ADD-MSG';
 const SETUSER = 'SETUSER';
 const UPD_STATUS = 'UPD_STATUS';
 const SEND_PHOTO = 'SEND_PHOTO';
+const EDIT_PROFILE = 'EDIT_PROFILE';
 
 let initState = {
   user: null,
@@ -34,6 +35,7 @@ const ChatReducer = (state = initState, action) => {
       return { ...state, status: action.status };
 
     case SEND_PHOTO:
+      console.log(action.photo);
       return { ...state, user: [{ ...state.user[0], photos: action.photo }] };
 
     case MSG_ADD: {
@@ -47,6 +49,10 @@ const ChatReducer = (state = initState, action) => {
       };
     }
 
+    case EDIT_PROFILE: {
+      return { ...state, user: action.user };
+    }
+
     default:
       return state;
   }
@@ -57,7 +63,7 @@ export const setUserProfileAC = (user) => ({ type: SETUSER, user: [user] });
 export const updLocalStatus = (status) => ({ type: UPD_STATUS, status });
 export const setStatus = (status, userId) => ({ type: SETSTATUS, status });
 export const setUploadPhoto = (photo) => ({ type: SEND_PHOTO, photo });
-
+export const setEditProfile = (profileEdit) => ({ type: EDIT_PROFILE, profileEdit });
 export default ChatReducer;
 
 export const setUser = (user) => {
@@ -86,5 +92,15 @@ export const uploadPhoto = (photo) => {
   return async (dispatch) => {
     let response = await API.uploadPhoto(photo);
     dispatch(setUploadPhoto(response.data.data.photos));
+  };
+};
+
+export const profileEditAC = (profileEdit, id) => {
+  return async (dispatch) => {
+    let tmp = profileEdit;
+    let response = await API.editProfile(profileEdit);
+    let resp = await API.getStatusUserId(id);
+    console.log(resp);
+    dispatch(setUserProfileAC(resp.data));
   };
 };

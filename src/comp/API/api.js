@@ -54,6 +54,15 @@ const API = {
   getStatus(userId) {
     return axios.get('https://social-network.samuraijs.com/api/1.0/profile/status/' + userId);
   },
+  editProfile(profileEdit) {
+    console.log(profileEdit);
+    return axios.put('https://social-network.samuraijs.com/api/1.0/profile', profileEdit, {
+      withCredentials: true,
+      headers: {
+        'API-KEY': '56d58e33-3be0-401e-afaa-d0a047a84c57',
+      },
+    });
+  },
   updStatus(text) {
     alert(text);
     return axios.put(
