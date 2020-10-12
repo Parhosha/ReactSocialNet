@@ -12,6 +12,7 @@ const Form = (props) => {
     <form action="" onSubmit={props.handleSubmit}>
       <Field component={Area} ref={clickRef} name="msg" placeholder="Hi!" validate={[ValueMax]} />
       <button>Send</button>
+
     </form>
   );
 };

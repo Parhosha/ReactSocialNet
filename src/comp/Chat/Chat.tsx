@@ -5,8 +5,20 @@ import srcImg from '../img/package.png';
 import Preloader from '../Preloader/Preloader';
 import PostRemark from '../Posts/Post/PostRemark';
 import ProfileDataEdit from './ProfileDataForm';
+import { messagesInit, photosType, userType } from '../redux/Chat-reducer';
 
-const Message = (props) => {
+type chatPropsType = {
+  user: any,
+  messages: Array<messagesInit>,
+  status: string,
+
+  updStatus: (status: string) => any,
+  heppandActionCreator: (msg: string) => any,
+  uploadPhoto: (photo: photosType) => any,
+  profileEditAC: (profileEdit: userType, id: number) => any,
+  // updateMsgActionCreator: () => any
+}
+const Message = (props: any) => {
   return (
     <div>
       <p>{props.send}</p>
@@ -14,19 +26,19 @@ const Message = (props) => {
   );
 };
 
-const Chat = (props) => {
+const Chat: React.FC<chatPropsType> = (props) => {
   let [editMode, setEditMode] = useState(0);
 
   if (!props.user) {
     return <Preloader />;
   }
 
-  const uploadPhoto = (e) => {
+  const uploadPhoto = (e: any) => {
     if (e.target.files.length) {
       props.uploadPhoto(e.target.files[0]);
     }
   };
-  const goEdit = (e) => {
+  const goEdit = (e: any) => {
     setEditMode(e);
   };
 
@@ -35,12 +47,10 @@ const Chat = (props) => {
   return (
     <div>
       <div className={s.Chat}>
-        {
-          //console.log(editMode + ' use state')
-        }
+
         {editMode ? (
           <ProfileDataEdit
-            thisUser={props.thisUser}
+            //thisUser={props.thisUser}
             profileEditAC={props.profileEditAC}
             user={props.user}
             uploadPhoto={uploadPhoto}
@@ -50,35 +60,36 @@ const Chat = (props) => {
             goEdit={goEdit}
           />
         ) : (
-          <ProfileData
-            // goEdit={() => {
-            //  setEditMode(true);
-            //}}
-            goEdit={goEdit}
-            user={props.user}
-            uploadPhoto={uploadPhoto}
-            updStatus={props.updStatus}
-            status={props.status}
-          />
-        )}
+            <ProfileData
+              // goEdit={() => {
+              //  setEditMode(true);
+              //}}
+              goEdit={goEdit}
+              user={props.user}
+              uploadPhoto={uploadPhoto}
+              updStatus={props.updStatus}
+              status={props.status}
+            />
+          )}
 
         <div className={s.Massages}>{Messages}</div>
       </div>
       <Footer
-        updateMsgActionCreator={props.updateMsgActionCreator}
+        // updateMsgActionCreator={props.updateMsgActionCreator}
         heppandActionCreator={props.heppandActionCreator}
       />
     </div>
   );
 };
 
-const ProfileData = (props) => {
+const ProfileData = (props: any) => {
   console.log(props.user);
   return (
     <div className={s.Contacts}>
-      {console.log('not edit')}
+
       <button onClick={props.goEdit}>Change mode</button>
-      {props.user.map((p, index) => (
+
+      {props.user.map((p: any, index: any) => (
         <div id={p.id} key={`${p}_${index}`}>
           <div>
             <img alt="#" src={p.photos.small ? p.photos.small : srcImg}></img>
@@ -86,8 +97,8 @@ const ProfileData = (props) => {
           {p.userId == `8189` ? (
             <input type="file" onChange={props.uploadPhoto} />
           ) : (
-            console.log('!8189')
-          )}
+              console.log('!8189')
+            )}
           <div>
             <b>{p.fullName}</b>
           </div>
@@ -106,7 +117,8 @@ const ProfileData = (props) => {
           </div>
           <br />
           <div>{' Twitter: ' + p.contacts.twitter + ' '}</div>
-          <div>{' Follow: ' + p.contacts.followed + ' '}</div>
+          <div>{' GitHub: ' + p.contacts.github + ' '}</div>
+
 
           {p.userId == `8189` ? (
             <PostRemark
@@ -114,8 +126,9 @@ const ProfileData = (props) => {
               updStatus={props.updStatus}
               status={props.status}></PostRemark>
           ) : (
-            console.log('!8189')
-          )}
+              <div>{' Follow: ' + p.contacts.followed + ' '}</div>
+
+            )}
         </div>
       ))}
     </div>

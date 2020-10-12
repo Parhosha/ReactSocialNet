@@ -27,14 +27,19 @@ class App extends React.Component {
   }
 
   render() {
-    //console.log(this.props.autoRith);
-    if (!this.props.autoRith) {
-      //!
+    console.log(this.props.autoRith);
+    if (null) {
+      /*
+
+        if (!this.props.autoRith) {
+    
+      */
       return <Preloader />;
     }
 
     return (
       <div>
+
         <HeaderContainer />
 
         <Route path="/Content" render={WithSus(ContentWrapper)} />
@@ -44,6 +49,7 @@ class App extends React.Component {
         <Route path="/Users" render={WithSus(UsersWrapper)} />
 
         <Route path="/Login" render={WithSus(Login)} />
+
       </div>
     );
   }

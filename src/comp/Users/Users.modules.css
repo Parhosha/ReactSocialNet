@@ -1,13 +1,12 @@
 div img {
   width: 150px;
 }
-h1,
-h5 {
+h1,h3,h5,a,b {
   text-align: center;
 }
-.headerDesc {
-  padding: 25px;
-}
+
+  
+
 .user {
   padding: 40px 20px;
   display: grid;

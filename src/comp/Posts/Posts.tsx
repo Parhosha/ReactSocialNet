@@ -4,19 +4,19 @@ import s from './Post/Post.module.css';
 import Footer from '../Footer';
 import { Redirect } from 'react-router-dom';
 
-const Posts = (props) => {
+const Posts = (props: any) => {
   console.log('Post');
-
-  let PostString = props.ContentPage.text.map((p) => <Post title={p.title} text={p.text} />);
+  //@ts-ignore
+  let PostString = props.ContentPage.text.map((p: any) => <Post title={p.title} text={p.text} />);
 
   return (
     <div>
       <div className={s.content}>{PostString}</div>
 
-      <center>
-        {' '}
-        <Footer hpd={props.heppandTextActionCreator} className={s.MsgBox} />
-      </center>
+
+      {' '}
+      <Footer hpd={props.heppandTextActionCreator} className={s.MsgBox} />
+
     </div>
   );
 };

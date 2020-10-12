@@ -1,5 +1,5 @@
 import s from './Chat.module.css';
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, , useEffect } from 'react';
 import srcImg from '../img/package.png';
 import { Field, reduxForm } from 'redux-form';
 import ProfileDataFormFields from './ProfileDataFormFields';
